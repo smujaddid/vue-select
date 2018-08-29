@@ -315,7 +315,7 @@
 
 <template>
   <div :dir="dir" class="dropdown v-select" :class="dropdownClasses">
-    <div ref="toggle" @mousedown.prevent="toggleDropdown" class="dropdown-toggle">
+    <div ref="toggle" @mousedown.left.prevent="toggleDropdown" class="dropdown-toggle">
 
       <div class="vs__selected-options" ref="selectedOptions">
         <slot v-for="option in valueAsArray" name="selected-option-container"
