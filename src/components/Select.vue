@@ -893,7 +893,7 @@
        * @return {void}
        */
       toggleDropdown(e) {
-        if (e.target === this.$refs.openIndicator || e.target === this.$refs.search || e.target === this.$refs.toggle ||
+        if (e.target === this.$refs.openIndicator || e.target === this.$refs.search || e.target === this.$refs.toggle || e.target === this.$refs.selectedOptions ||
             e.target.classList.contains('selected-tag') || e.target === this.$el) {
           if (this.open) {
             this.$refs.search.blur() // dropdown will close on blur
