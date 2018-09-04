@@ -150,7 +150,7 @@
     background-color: transparent;
     border-color: transparent;
   }
-  .v-select.single.open .selected-tag,
+  /*.v-select.single.open .selected-tag,*/
   .v-select.single.loading .selected-tag {
     display: none;
   }
