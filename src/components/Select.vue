@@ -342,7 +342,6 @@
                 @blur="onSearchBlur"
                 @focus="onSearchFocus"
                 type="search"
-                class="form-control"
                 :class="inputClasses"
                 autocomplete="off"
                 :disabled="disabled"
