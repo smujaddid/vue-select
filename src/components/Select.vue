@@ -324,7 +324,7 @@
             <slot name="selected-option" v-bind="(typeof option === 'object')?option:{[label]: option}">
               {{ getOptionLabel(option) }}
             </slot>
-            <button v-if="multiple" :disabled="disabled" @click="deselect(option)" type="button" class="close" aria-label="Remove option">
+            <button v-if="multiple" :disabled="readonly || disabled" @click="deselect(option)" type="button" class="close" aria-label="Remove option">
               <span aria-hidden="true">&times;</span>
             </button>
           </span>
@@ -347,7 +347,7 @@
                 :disabled="disabled"
                 :placeholder="searchPlaceholder"
                 :tabindex="tabindex"
-                :readonly="!searchable"
+                :readonly="!searchable || readonly"
                 :id="inputId"
                 role="combobox"
                 :aria-expanded="dropdownOpen"
@@ -358,7 +358,7 @@
       <div class="vs__actions">
         <button
           v-show="showClearButton"
-          :disabled="disabled"
+          :disabled="disabled || readonly"
           @click="clearSelection"
           type="button"
           class="clear"
@@ -430,6 +430,15 @@
        * @type {Boolean}
        */
       disabled: {
+        type: Boolean,
+        default: false
+      },
+
+      /**
+       * Should the component readonly?
+       * @type {Boolean}
+       */
+      readonly: {
         type: Boolean,
         default: false
       },
@@ -848,7 +857,7 @@
        * @return {void}
        */
       deselect(option) {
-        if (this.multiple) {
+        if (this.multiple && !this.readonly) {
           let ref = -1
           this.mutableValue.forEach((val) => {
             if (val === option || (this.index && val === option[this.index]) || (typeof val === 'object' && val[this.label] === option[this.label])) {
