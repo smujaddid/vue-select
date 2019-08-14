@@ -4,7 +4,7 @@
 
 <template>
   <div :dir="dir" class="v-select" :class="stateClasses">
-    <div ref="toggle" @mousedown.prevent="toggleDropdown" class="vs__dropdown-toggle">
+    <div ref="toggle" @mousedown.left.prevent="toggleDropdown" class="vs__dropdown-toggle">
 
       <div class="vs__selected-options" ref="selectedOptions">
         <slot v-for="option in selectedValue"
@@ -129,7 +129,7 @@
       },
 
       /**
-       * Can the user clear the selected property.
+       * Can the user clear the selected property?
        * @type {Boolean}
        */
       clearable: {
